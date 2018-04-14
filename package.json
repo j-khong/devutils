@@ -1,0 +1,20 @@
+{
+  "name": "@jkhong/devutils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha tests.js"
+  },
+  "bugs":{
+    "url": "https://github.com/j-khong/devutils/issues"
+  },
+  "author": "Julien Khong <julienkhong@yahoo.fr>",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^5.1.0"
+  },
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
+}
