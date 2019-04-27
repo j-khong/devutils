@@ -12,10 +12,10 @@ module.exports = {
   isSet: isSet,
   isNotSet: isNotSet,
   isOneNotSet: function (memberNames, data) {
-    var ret = false;
-    memberNames.forEach(function (member) {
+    let ret = false;
+    for (const member of memberNames) {
       if (isNotSet(data[member])) { ret = true; return; }
-    });
+    }
     return ret;
   },
   isAllSet: function (memberNames, data) { return !isOneNotSet(memberNames, data); },
@@ -23,21 +23,21 @@ module.exports = {
   getChildFieldValue: function (struct, fieldnames, defval) {
     let val = defval;
 
-    fieldnames.forEach(fieldname => {
+    for (const fieldname of fieldnames) {
       val = getFieldValue(struct, fieldname, defval);
-      if (val == defval) { return defval; }
+      if (val === defval) { return defval; }
       struct = struct[fieldname];
-    });
+    }
     return val;
   },
   isBlank: function (string) {
     if ('string' !== typeof string) { return true; }
-    return (!isSet(string) || string.trim().length === 0);
+    return (isNotSet(string) || string.trim().length === 0);
   },
   Array: {
     isEmpty: function (array) {
       if (!Array.isArray(array)) { return true; }
-      return (!isSet(array) || array.length === 0);
+      return (isNotSet(array) || array.length === 0);
     },
     getField(array, indexValue, fieldname, defval) {
       if (!Array.isArray(array)) { return defval; }
@@ -48,6 +48,12 @@ module.exports = {
         return array[indexValue][fieldname];
       }
       return defval;
+    }
+  },
+  Function: {
+    isAsync: function (fn) {
+      if (isNotSet(fn)) { return false; }
+      return (fn.constructor.name === 'AsyncFunction');
     }
   }
 };

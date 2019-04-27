@@ -6,11 +6,16 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha tests.js"
   },
+  "author": "Julien Khong <julienkhong@yahoo.fr>",
+  "license": "ISC",
+  "homepage": "https://github.com/j-khong/devutils#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/j-khong/devutils.git"
+  },
   "bugs": {
     "url": "https://github.com/j-khong/devutils/issues"
   },
-  "author": "Julien Khong <julienkhong@yahoo.fr>",
-  "license": "ISC",
   "devDependencies": {
     "mocha": "^5.1.0"
   },
