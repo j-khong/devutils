@@ -1,23 +1,23 @@
 {
-  "name": "@jkhong/devutils",
-  "version": "1.1.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "./node_modules/mocha/bin/mocha tests.js"
-  },
-  "author": "Julien Khong <julienkhong@yahoo.fr>",
-  "license": "ISC",
-  "homepage": "https://github.com/j-khong/devutils#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/j-khong/devutils.git"
-  },
-  "bugs": {
-    "url": "https://github.com/j-khong/devutils/issues"
-  },
-  "devDependencies": {
-    "mocha": "^5.1.0"
-  },
-  "dependencies": {}
+    "name": "@jkhong/devutils",
+    "version": "1.2.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "./node_modules/mocha/bin/mocha tests.js"
+    },
+    "author": "Julien Khong <julienkhong@yahoo.fr>",
+    "license": "ISC",
+    "homepage": "https://github.com/j-khong/devutils#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/j-khong/devutils.git"
+    },
+    "bugs": {
+        "url": "https://github.com/j-khong/devutils/issues"
+    },
+    "devDependencies": {
+        "mocha": "^5.1.0"
+    },
+    "dependencies": {}
 }
