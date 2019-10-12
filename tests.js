@@ -1,10 +1,11 @@
 let assert = require('assert');
-let DevUtils = require('./index');
+const { DevUtils, StringUtils, FunctionUtils } = require('./dist/index');
 
 describe('Object utils', function () {
     describe('#isSet()', function () {
-        it('should return false when the value is undefined or null', function () {
+        it('should return false when the value is undefined or null or "undefined"', function () {
             assert.equal(DevUtils.isSet(undefined), false);
+            assert.equal(DevUtils.isSet("undefined"), false);
             assert.equal(DevUtils.isSet(null), false);
         });
         it('should return true when the value is a number', function () {
@@ -110,18 +111,18 @@ describe('Object utils', function () {
             it('should return true when the string is null, undefined, has no char or only blanks', function () {
                 const values = [null, undefined, "", " ", "                  "];
                 for (const value of values) {
-                    assert.equal(DevUtils.isBlank(value), true);
+                    assert.equal(StringUtils.isBlank(value), true);
                 }
             });
             it('should return true when the parameter is not a string', function () {
-                assert.equal(DevUtils.isBlank(1), true);
-                assert.equal(DevUtils.isBlank(true), true);
-                assert.equal(DevUtils.isBlank({}), true);
+                assert.equal(StringUtils.isBlank(1), true);
+                assert.equal(StringUtils.isBlank(true), true);
+                assert.equal(StringUtils.isBlank({}), true);
             });
             it('should return false when the string has at least 1 char other than blank', function () {
                 const values = ["1", " &&&fsgsg", " &&&fsgsg. ", " &&&.  fsgsg ", " &&&.  fsgsg", "&&&.  fsgsg"];
                 for (const value of values) {
-                    assert.equal(DevUtils.isBlank(value), false);
+                    assert.equal(StringUtils.isBlank(value), false);
                 }
             });
         });
@@ -131,19 +132,19 @@ describe('Object utils', function () {
         describe('#isAsync()', function () {
             it('should return true when the function is async', function () {
                 const syncFunc = async () => { };
-                assert.equal(DevUtils.Function.isAsync(syncFunc), true);
+                assert.equal(FunctionUtils.isAsync(syncFunc), true);
             });
             it('should return false when the function is null', function () {
                 const syncFunc = null;
-                assert.equal(DevUtils.Function.isAsync(syncFunc), false);
+                assert.equal(FunctionUtils.isAsync(syncFunc), false);
             });
             it('should return false when the function is undefined', function () {
                 const syncFunc = undefined;
-                assert.equal(DevUtils.Function.isAsync(syncFunc), false);
+                assert.equal(FunctionUtils.isAsync(syncFunc), false);
             });
             it('should return false when the function is sync', function () {
                 const syncFunc = () => { };
-                assert.equal(DevUtils.Function.isAsync(syncFunc), false);
+                assert.equal(FunctionUtils.isAsync(syncFunc), false);
             });
         });
     });
