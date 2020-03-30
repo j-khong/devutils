@@ -1,6 +1,6 @@
 {
     "name": "@jkhong/devutils",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "description": "Provides some syntactic sugar and shortcuts to bullet proof your devs",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
