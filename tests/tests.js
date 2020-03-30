@@ -1,5 +1,5 @@
 let assert = require('assert');
-const { DevUtils, StringUtils, FunctionUtils } = require('./dist/index');
+const { DevUtils, StringUtils, FunctionUtils } = require('../dist/index');
 
 describe('Object utils', function () {
     describe('#isSet()', function () {
