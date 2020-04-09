@@ -1,41 +1,48 @@
 {
-    "name": "@jkhong/devutils",
-    "version": "1.3.3",
-    "description": "Provides some syntactic sugar and shortcuts to bullet proof your devs",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "scripts": {
-        "build": "tsc",
-        "test": "npm run build && ./node_modules/mocha/bin/mocha tests/tests.js",
-        "format": "prettier --write \"src/**/*.ts\"",
-        "lint": "tslint -p tsconfig.json",
-        "prepare": "npm run build",
-        "prepublishOnly": "npm run lint && npm test",
-        "preversion": "npm run lint",
-        "version": "npm run format && git add -A src",
-        "postversion": "git push && git push --tags"
-    },
-    "files": [
-        "dist/**/*"
-    ],
-    "author": "Julien Khong <julienkhong@yahoo.fr>",
-    "license": "ISC",
-    "homepage": "https://github.com/j-khong/devutils#readme",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/j-khong/devutils.git"
-    },
-    "bugs": {
-        "url": "https://github.com/j-khong/devutils/issues"
-    },
-    "devDependencies": {
-        "mocha": "^5.1.0",
-        "minimist": ">=1.2.2",
-        "prettier": "^2.0.2",
-        "tslint": "^6.1.0",
-        "tslint-config-prettier": "^1.18.0",
-        "typescript": "^3.6.3"
-    },
-    "dependencies": {},
-    "keywords": []
+   "name": "@jkhong/devutils",
+   "version": "1.3.3",
+   "description": "Provides some syntactic sugar and shortcuts to bullet proof your devs",
+   "main": "dist/index.js",
+   "types": "dist/index.d.ts",
+   "scripts": {
+      "build": "tsc",
+      "test": "npm run build && ./node_modules/mocha/bin/mocha tests/tests.js",
+      "format": "prettier --write \"src/**/*.ts\"",
+      "lint": "tslint -p tsconfig.json",
+      "prepare": "npm run build",
+      "prepublishOnly": "npm run lint && npm test",
+      "preversion": "npm run lint",
+      "version": "npm run format && git add -A src",
+      "postversion": "git push && git push --tags"
+   },
+   "husky": {
+      "hooks": {
+         "pre-commit": "npm run format && npm run lint",
+         "pre-push": "npm test"
+      }
+   },
+   "files": [
+      "dist/**/*"
+   ],
+   "author": "Julien Khong <julienkhong@yahoo.fr>",
+   "license": "ISC",
+   "homepage": "https://github.com/j-khong/devutils#readme",
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/j-khong/devutils.git"
+   },
+   "bugs": {
+      "url": "https://github.com/j-khong/devutils/issues"
+   },
+   "devDependencies": {
+      "husky": "^4.2.3",
+      "minimist": ">=1.2.2",
+      "mocha": "^5.1.0",
+      "prettier": "^2.0.2",
+      "tslint": "^6.1.0",
+      "tslint-config-prettier": "^1.18.0",
+      "typescript": "^3.6.3"
+   },
+   "dependencies": {},
+   "keywords": []
 }
