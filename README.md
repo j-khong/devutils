@@ -6,6 +6,10 @@ Provides some syntactic sugar and shortcuts to bullet proof your devs
 
 ## check variable is set or empty
 
+### main benefit
+check if null or undefined or 'undefined' at once
+
+### example
 ```js
 import { DevUtils } from '@jkhong/devutils';
 
@@ -31,6 +35,12 @@ for (const val of values) {
 
 ## returns an object field value or the default value
 
+### main benefit
+ - check if null or undefined or 'undefined' at once
+ - set actual value or a default one if not set
+ - value setting stays simple and human readable
+
+### example
 ```js
 import { DevUtils } from '@jkhong/devutils';
 
@@ -45,7 +55,12 @@ console.log(objectFieldValue); // prints objectValue
 ```
 
 ## returns an sub object field value or the default value
+### main benefit
+ - check if null or undefined or 'undefined' for each sub object
+ - set actual value or a default one if not set
+ - value setting stays simple and human readable
 
+### example
 ```js
 import { DevUtils } from '@jkhong/devutils';
 
