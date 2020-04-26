@@ -66,8 +66,6 @@ export class DevUtils {
    }
 }
 
-import { StringUtils } from './string';
-import { ArrayUtils } from './array';
-import { FunctionUtils } from './function';
-
-export { StringUtils, FunctionUtils, ArrayUtils };
+export { StringUtils } from './string';
+export { ArrayUtils } from './array';
+export { FunctionUtils } from './function';
