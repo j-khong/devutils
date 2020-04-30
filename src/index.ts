@@ -1,9 +1,13 @@
 export class DevUtils {
-   public static isSet(obj: any): boolean {
-      return undefined !== obj && null !== obj && 'undefined' !== obj;
+   public static isSet<T = any>(obj: T | null | undefined): obj is T {
+      const res: boolean = undefined !== obj && null !== obj;
+      if (typeof obj === 'string') {
+         return res && 'undefined' !== obj;
+      }
+      return res;
    }
-   public static isNotSet(obj: any): boolean {
-      return !this.isSet(obj);
+   public static isNotSet<T = any>(obj: T | null | undefined): obj is null | undefined {
+      return !this.isSet<T>(obj);
    }
    public static isOneNotSet(memberNames: string[], data: any): boolean {
       let ret = false;
