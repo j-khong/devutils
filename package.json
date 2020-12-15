@@ -8,7 +8,7 @@
       "build": "tsc",
       "test": "npm run build && ./node_modules/mocha/bin/mocha tests/tests.js",
       "format": "prettier --write \"src/**/*.ts\"",
-      "lint": "tslint -p tsconfig.json",
+      "lint": "eslint src --ext .js,.ts",
       "prepare": "npm run build",
       "prepublishOnly": "npm run lint && npm test",
       "preversion": "npm run lint",
@@ -35,12 +35,14 @@
       "url": "https://github.com/j-khong/devutils/issues"
    },
    "devDependencies": {
+      "@typescript-eslint/eslint-plugin": "^2.30.0",
+      "@typescript-eslint/parser": "^2.30.0",
+      "eslint": "^6.8.0",
+      "eslint-config-prettier": "^6.11.0",
       "husky": "^4.2.3",
       "minimist": ">=1.2.2",
       "mocha": "^5.1.0",
       "prettier": "^2.0.2",
-      "tslint": "^6.1.0",
-      "tslint-config-prettier": "^1.18.0",
       "typescript": "^3.6.3"
    },
    "dependencies": {},
