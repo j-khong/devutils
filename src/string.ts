@@ -1,4 +1,4 @@
-import { DevUtils } from './index';
+import { DevUtils } from './dev';
 
 export class StringUtils {
    public static isBlank(str: string): boolean {

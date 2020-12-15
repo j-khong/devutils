@@ -1,4 +1,4 @@
-import { DevUtils } from './index';
+import { DevUtils } from './dev';
 
 export class FunctionUtils {
    public static isAsync(fn: any): boolean {

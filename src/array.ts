@@ -1,4 +1,4 @@
-import { DevUtils } from './index';
+import { DevUtils } from './dev';
 
 export class ArrayUtils {
    public static isEmpty(array: any[]): boolean {
