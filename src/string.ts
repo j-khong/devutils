@@ -30,7 +30,7 @@ export class StringUtils {
       }
       const lowercase = word[0].toLowerCase();
       if (word.length > 1) {
-         return lowercase + word.substr(1);
+         return lowercase + word.slice(1);
       }
       return lowercase;
    }
@@ -41,7 +41,7 @@ export class StringUtils {
       }
       const uppercase = word[0].toUpperCase();
       if (word.length > 1) {
-         return uppercase + word.substr(1);
+         return uppercase + word.slice(1);
       }
       return uppercase;
    }
