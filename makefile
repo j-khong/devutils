@@ -21,3 +21,10 @@ build: install
 test: build
 	@echo 'compiling typescript'
 	@npx mocha tests/tests.js
+
+
+.PHONY: release
+release: build
+	@npm login
+	npm version $(VERSION)
+	npm publish --access=public
