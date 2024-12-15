@@ -22,7 +22,7 @@ export class DevUtils {
    public static isAllSet(memberNames: string[], data: any): boolean {
       return !this.isOneNotSet(memberNames, data);
    }
-   public static getFieldValue(struct: any, fieldname: string, defval: any): any {
+   public static getFieldValue<T>(struct: Record<string, any>, fieldname: string, defval: T): T {
       if (this.isSet(struct) && this.isSet(struct[fieldname])) {
          return struct[fieldname];
       }
@@ -40,7 +40,7 @@ export class DevUtils {
       }
       return this.isNotSet(str) || str.trim().length === 0;
    }
-   public static getChildFieldValue(struct: any, fieldnames: string[], defval: any): any {
+   public static getChildFieldValue<T>(struct: Record<string, any>, fieldnames: string[], defval: T): T {
       let val = defval;
 
       for (const fieldname of fieldnames) {
@@ -67,5 +67,45 @@ export class DevUtils {
       }
 
       return false;
+   }
+
+   public static makeSingleton<T>(callback: () => Promise<T>) {
+      let singleton: T | undefined;
+      return (): Promise<T> => {
+         return new Promise((resolve, reject) => {
+            if (singleton !== undefined) {
+               resolve(singleton);
+               return;
+            }
+            callback()
+               .then((sglton) => {
+                  singleton = sglton;
+                  resolve(singleton);
+               })
+               .catch((err) => {
+                  reject(err);
+               });
+         });
+      };
+   }
+
+   /**
+    *
+    * @param func the function to execute
+    * @param waitForInMs the debounce time in milliseconds
+    * @returns
+    */
+   public static debounce<F extends (...args: any[]) => void>(
+      func: F,
+      waitForInMs: number,
+   ): (...args: Parameters<F>) => void {
+      let timeout: ReturnType<typeof setTimeout>;
+
+      return (...args: Parameters<F>): void => {
+         clearTimeout(timeout);
+         timeout = setTimeout(() => {
+            func(...args);
+         }, waitForInMs);
+      };
    }
 }
