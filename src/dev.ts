@@ -6,9 +6,11 @@ export class DevUtils {
       }
       return res;
    }
+
    public static isNotSet<T = any>(obj: T | null | undefined): obj is null | undefined {
       return !this.isSet<T>(obj);
    }
+
    public static isOneNotSet(memberNames: string[], data: any): boolean {
       let ret = false;
       for (const member of memberNames) {
@@ -19,27 +21,32 @@ export class DevUtils {
       }
       return ret;
    }
+
    public static isAllSet(memberNames: string[], data: any): boolean {
       return !this.isOneNotSet(memberNames, data);
    }
+
    public static getFieldValue<T>(struct: Record<string, any>, fieldname: string, defval: T): T {
       if (this.isSet(struct) && this.isSet(struct[fieldname])) {
          return struct[fieldname];
       }
       return defval;
    }
+
    private static isEmptyArray(array: any[]): boolean {
       if (!Array.isArray(array)) {
          return true;
       }
       return this.isNotSet(array) || array.length === 0;
    }
+
    private static isEmptyString(str: string): boolean {
       if ('string' !== typeof str) {
          return true;
       }
       return this.isNotSet(str) || str.trim().length === 0;
    }
+
    public static getChildFieldValue<T>(struct: Record<string, any>, fieldnames: string[], defval: T): T {
       let val = defval;
 
@@ -52,6 +59,7 @@ export class DevUtils {
       }
       return val;
    }
+
    public static isEmpty(value: any): boolean {
       if (this.isNotSet(value)) {
          return true;
@@ -107,5 +115,25 @@ export class DevUtils {
             func(...args);
          }, waitForInMs);
       };
+   }
+
+   public static getError(e: unknown): Error {
+      if (e instanceof Error) {
+         return e;
+      }
+      if (typeof e === 'string') {
+         return new Error(e);
+      }
+
+      let error = 'unknown error';
+      if (e !== undefined && (e as any).message !== undefined) {
+         error = (e as any).message;
+      }
+
+      if (e !== undefined && (e as any).error !== undefined) {
+         error += ' > ' + (e as any).error;
+      }
+
+      return new Error(error);
    }
 }

@@ -19,9 +19,8 @@ build: install
 
 .PHONY: test
 test: build
-	@echo 'compiling typescript'
-	@npx mocha tests/tests.js
-
+	@npx mocha tests/tests.js && \
+	npx vitest run
 
 .PHONY: release
 release: build
