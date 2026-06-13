@@ -13,7 +13,7 @@ export class TestUtils {
          const output = await o.run(input);
          await o.checkPostconditions(output);
          return { success: true };
-      } catch (e: unknown) {
+      } catch (e) {
          return { success: false, error: DevUtils.getError(e) };
       }
    }
@@ -30,7 +30,7 @@ export class TestUtils {
          await o.checkError(output);
          await o.checkPostconditions(output);
          return { success: true };
-      } catch (e: unknown) {
+      } catch (e) {
          return { success: false, error: DevUtils.getError(e) };
       }
    }
@@ -45,7 +45,7 @@ export class TestUtils {
          const input = await o.setPreconditions();
          await o.run(input);
          return { success: false, error: new Error('No exception thrown') };
-      } catch (e: unknown) {
+      } catch (e) {
          await o.checkError(e);
          await o.checkPostconditions();
          return { success: true };
