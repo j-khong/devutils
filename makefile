@@ -13,7 +13,7 @@ lint: install
 	@npx eslint src --ext .js,.ts
 
 .PHONY: build
-build: install
+build: install clean
 	@echo 'compiling typescript'
 	@npx tsc
 
@@ -27,3 +27,8 @@ release: build
 	@npm login
 	npm version $(VERSION)
 	npm publish --access=public
+
+.PHONY: clean
+clean:
+	@echo 'cleaning build artifacts...'
+	@rm -rf dist
